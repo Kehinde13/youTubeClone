@@ -1,4 +1,5 @@
 <template>
+  <div className="max-h-screen flex flex-col">
   <HeaderVue />
   <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
     <SideBar/>
@@ -10,13 +11,12 @@
                 @pill="setSelectedPill"
               />
             <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
-               <VideoGridItem
-                :videos:"videos"
-               />
+               <VideoGridItem  v-for="video in videos" :key="video.id" :video="video"/>
             </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -42,15 +42,3 @@
   
 </style>
 
-function defineEmits(arg0: string[]) {
-  throw new Error("Function not implemented.");
-}
-
-function defineEmits(arg0: string[]) {
-  throw new Error("Function not implemented.");
-}
-
-function defineEmits(arg0: string[]) {
-  throw new Error("Function not implemented.");
-}
-./data/data./data/data

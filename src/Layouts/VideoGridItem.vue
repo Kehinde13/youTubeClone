@@ -1,50 +1,109 @@
 <template>
-       <div class="flex flex-col gap-2">
-          <a :href="`/watch?v=${id}`" class="relative aspect-video">
-            <img 
-             :src="thumbnailUrl"
-             class="block w-full h-full object-cover rounded-xl"
+    <div class="flex flex-col gap-2" @mouseenter="setPlayTrue" @mouseleave="setPlayFalse">
+        <a :href="`/watch?v=${video.id}`" class="relative aspect-video">
+            <img :src="video.thumbnailUrl" 
+                 class="block w-full h-full object-cover transition-[border-radius] duration-200" 
+                 :class="[ isVideoPlaying ? 'rounded-none' : 'rounded-xl' ]"
             />
-            <div className="absolute bottom-1 right-1 bg-secondary-dark text-secondary text-sm px-0.5 rounded">
-              {{ duration }}
-            </div>  
-         </a>
-       </div>
+            <div class="absolute bottom-1 right-1 bg-black text-white text-sm px-0.5 rounded">
+                {{ formatDuration(video.duration) }}
+            </div>
+             <video class="block object-cover inset-0 absolute transition-opacity duration-200" 
+                   :class="[isVideoPlaying ? 'opacity-100 delay-200' : 'opacity-0' ]"
+                   ref="videoRef"
+                   muted playsInline 
+                   :src="video.videoUrl" 
+            />
+        </a>
+
+        <div className="flex gap-2">
+            <a :href="`/@${video.channel.id}`" className="flex-shrink-0">
+                <img className="w-12 h-12 rounded-full" :src="video.channel.profileUrl" />
+            </a>
+            <div className="flex flex-col">
+                <a href="`/watch?v=${id}`" className="font-bold">
+                    {{ video.title }}
+                </a>
+                <a href="`/@${channel.id}`" className="text-secondary-text text-sm">
+                    {{ video.channel.name }}
+                </a>
+                <div className="text-secondary-text text-sm">
+                    {{ VIEW_FORMATTER.format(video.views) }}
+                    Views •
+                    {{ formatTimeAgo(video.postedAt) }}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
 
+import { formatDuration } from '../Utils/TimeFormatter'
+import { formatTimeAgo } from '../Utils/TimeAgoFormatter'
+import { ref, watch } from 'vue';
+
+
+const VIEW_FORMATTER = new Intl.NumberFormat(undefined, { notation: "compact" })
+
+const videoRef = ref<HTMLVideoElement | null>(null);
+const isVideoPlaying = ref<boolean>(false)
 
 defineProps({
-    id: {
-        type: String
-    },
-    title: {
-        type: String
-    },
-    channel: {
+    video: {
         type: Object,
         default: {
-            id: String,
-            name: String,
-            profileUrl: String
+            id: {
+                type: String
+            },
+            title: {
+                type: String
+            },
+            channel: {
+                type: Object,
+                default: {
+                    id: String,
+                    name: String,
+                    profileUrl: String
+                }
+            },
+            views: {
+                type: Number
+            },
+            postedAt: {
+                type: Date
+            },
+            duration: {
+                type: Number
+            },
+            thumbnailUrl: {
+                type: String
+            },
+            videoUrl: {
+                type: String
+            }
         }
-    },
-    views: {
-        type: Number
-    },
-    postedAt: {
-        type: Date
-    },
-    duration: {
-        type: Number
-    },
-    thumbnailUrl: {
-        type: String
-    },
-    videoUrl: {
-        type: String
     }
+})
+
+const setPlayTrue = () => {
+    isVideoPlaying.value = true
+}
+
+const setPlayFalse = () => {
+    isVideoPlaying.value = false
+}
+
+watch([isVideoPlaying], () => {
+    if (videoRef.value === null) return
+
+    if (isVideoPlaying) {
+        videoRef.value.currentTime = 0
+        videoRef.value.play()
+    } else {
+        videoRef.value.pause()
+    }
+
 })
 
 </script>
