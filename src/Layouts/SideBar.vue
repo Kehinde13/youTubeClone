@@ -20,9 +20,9 @@
                 <LargeSideBarItem IconName="fa-solid fa-clock" title="Watch Later" url="/playlist?list=WL" />
             </LargeSideBarSection>
             <hr />
-            <div class="flex gap-4 relative cursor-pointer">
-                <div class="absolute left-28 top-3" @click="toggle">
-                    <font-awesome-icon v-if="showMore" icon="fa-solid fa-angle-up"  />
+            <div class="flex gap-4 relative">
+                <div class="absolute left-28 top-3 cursor-pointer bg-emerald-300" @click="toggle">
+                    <font-awesome-icon v-if="showMore" icon="fa-solid fa-angle-up" />
                    <font-awesome-icon v-else icon="fa-solid fa-angle-down"  />
                 </div>
                 
@@ -33,6 +33,25 @@
                         url="{`/playlist?list=${video.id}`}"
                         :title="video.name" 
                         IconName="fa-solid fa-file-video" 
+                    /> 
+                    </div>
+                    
+                </LargeSideBarSection>
+            </div>
+            <hr />
+            <div class="flex gap-4 relative">
+                <div class="absolute left-28 top-3 cursor-pointer bg-emerald-300" @click="toggle">
+                    <font-awesome-icon  icon="fa-solid fa-angle-up" />
+                   <font-awesome-icon  icon="fa-solid fa-angle-down"  />
+                </div>
+                
+                <LargeSideBarSection title="Subscriptions" class="relative">
+                    <div >
+                    <LargeSideBarItem v-for="sub in subscriptions" 
+                        :key="sub.id" 
+                        url="/playlist?list={{sub.id}}"
+                        :title="sub.channelName" 
+                        :img="sub.imgUrl" 
                     /> 
                     </div>
                     
@@ -49,13 +68,13 @@ import LargeSideBarItem from '../components/LargeSideBarItem.vue'
 import LargeSideBarSection from '../components/LargeSideBarSection.vue'
 import SmallSideBarItem from '../components/SmallSideBarItem.vue'
 import { playlists } from '../data/data'
+import { subscriptions } from '../data/data'
 
-const showMore = ref<boolean>(false)
+const showMore = ref(false)
 
 const toggle = () => {
     showMore.value = !showMore.value
-    console.log(showMore.value);
-    
+    alert(showMore.value); 
 }
 
 </script>
