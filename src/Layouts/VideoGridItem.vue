@@ -16,18 +16,18 @@
             />
         </a>
 
-        <div className="flex gap-2">
-            <a :href="`/@${video.channel.id}`" className="flex-shrink-0">
-                <img className="w-12 h-12 rounded-full" :src="video.channel.profileUrl" />
+        <div class="flex gap-2">
+            <a :href="`/@${video.channel.id}`" class="flex-shrink-0">
+                <img class="w-12 h-12 rounded-full" :src="video.channel.profileUrl" />
             </a>
-            <div className="flex flex-col">
-                <a href="`/watch?v=${id}`" className="font-bold">
+            <div class="flex flex-col">
+                <a href="`/watch?v=${id}`" class="font-bold">
                     {{ video.title }}
                 </a>
-                <a href="`/@${channel.id}`" className="text-secondary-text text-sm">
+                <a href="`/@${channel.id}`" class="text-secondary-text text-sm">
                     {{ video.channel.name }}
                 </a>
-                <div className="text-secondary-text text-sm">
+                <div class="text-secondary-text text-sm">
                     {{ VIEW_FORMATTER.format(video.views) }}
                     Views •
                     {{ formatTimeAgo(video.postedAt) }}

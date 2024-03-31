@@ -14,8 +14,18 @@ import {
     faMicrophone, 
     faArrowLeft,
     faChevronLeft,
-    faChevronRight
-
+    faChevronRight,
+    faHouseUser,
+    faRepeat,
+    faClapperboard,
+    faPhotoFilm,
+    faClockRotateLeft,
+    faCirclePlay,
+    faClock,
+    faFileVideo,
+    faAngleUp,
+    faAngleDown
+    
 } 
 from '@fortawesome/free-solid-svg-icons'
 
@@ -29,7 +39,17 @@ library.add(
     faUser, 
     faChevronLeft,
     faChevronRight,
-    faArrowLeft
+    faArrowLeft,
+    faHouseUser,
+    faRepeat,
+    faClapperboard,
+    faPhotoFilm,
+    faClockRotateLeft,
+    faCirclePlay,
+    faClock,
+    faFileVideo,
+    faAngleUp,
+    faAngleDown
 )
 
 createApp(App)
