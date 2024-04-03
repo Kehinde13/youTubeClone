@@ -21,40 +21,26 @@
             </LargeSideBarSection>
             <hr />
             <div class="flex gap-4 relative">
-                <div class="absolute left-28 top-3 cursor-pointer bg-emerald-300" @click="toggle">
-                    <font-awesome-icon v-if="showMore" icon="fa-solid fa-angle-up" />
-                   <font-awesome-icon v-else icon="fa-solid fa-angle-down"  />
-                </div>
-                
-                <LargeSideBarSection title="Playlists" class="relative">
-                    <div v-if="showMore">
-                    <LargeSideBarItem v-for="video in playlists" 
-                        :key="video.id" 
-                        url="{`/playlist?list=${video.id}`}"
-                        :title="video.name" 
-                        IconName="fa-solid fa-file-video" 
-                    /> 
+
+                <LargeSideBarSection title="Playlists" :showMorePlaylist="showMorePlaylist" @toggle="togglePlaylist"
+                    :dropDown="dropDown">
+                    <div v-if="showMorePlaylist">
+                        <LargeSideBarItem v-for="video in playlists" :key="video.id" :url="`/playlist?list=${video.id}`"
+                            :title="video.name" IconName="fa-solid fa-file-video" />
                     </div>
-                    
+
                 </LargeSideBarSection>
             </div>
             <hr />
             <div class="flex gap-4 relative">
-                <div class="absolute left-28 top-3 cursor-pointer bg-emerald-300" @click="toggle">
-                    <font-awesome-icon  icon="fa-solid fa-angle-up" />
-                   <font-awesome-icon  icon="fa-solid fa-angle-down"  />
-                </div>
-                
-                <LargeSideBarSection title="Subscriptions" class="relative">
-                    <div >
-                    <LargeSideBarItem v-for="sub in subscriptions" 
-                        :key="sub.id" 
-                        url="/playlist?list={{sub.id}}"
-                        :title="sub.channelName" 
-                        :img="sub.imgUrl" 
-                    /> 
+
+                <LargeSideBarSection title="Subscriptions" :showMoreSubscription="showMoreSubscription" @toggle="toggleSubscription"
+                    :dropDown="dropDown">
+                    <div v-if="showMoreSubscription">
+                        <LargeSideBarItem v-for="sub in subscriptions" :key="sub.id" :url="`/@${sub.id}`"
+                            :title="sub.channelName" :img="sub.imgUrl" />
                     </div>
-                    
+
                 </LargeSideBarSection>
             </div>
 
@@ -70,11 +56,16 @@ import SmallSideBarItem from '../components/SmallSideBarItem.vue'
 import { playlists } from '../data/data'
 import { subscriptions } from '../data/data'
 
-const showMore = ref(false)
+const showMorePlaylist = ref<boolean>(false)
+const showMoreSubscription = ref<boolean>(false)
+const dropDown = ref<boolean>(true)
 
-const toggle = () => {
-    showMore.value = !showMore.value
-    alert(showMore.value); 
+const togglePlaylist = () => {
+    showMorePlaylist.value = !showMorePlaylist.value
+}
+
+const toggleSubscription = () => {
+    showMoreSubscription.value = !showMoreSubscription.value
 }
 
 </script>
