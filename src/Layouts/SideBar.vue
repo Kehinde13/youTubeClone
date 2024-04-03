@@ -22,7 +22,7 @@
             <hr />
             <div class="flex gap-4 relative">
 
-                <LargeSideBarSection title="Playlists" :showMorePlaylist="showMorePlaylist" @toggle="togglePlaylist"
+                <LargeSideBarSection title="Playlists" :showMore="showMorePlaylist" @toggle="togglePlaylist"
                     :dropDown="dropDown">
                     <div v-if="showMorePlaylist">
                         <LargeSideBarItem v-for="video in playlists" :key="video.id" :url="`/playlist?list=${video.id}`"
@@ -41,6 +41,24 @@
                             :title="sub.channelName" :img="sub.imgUrl" />
                     </div>
 
+                </LargeSideBarSection>
+            </div>
+
+            <hr />
+
+            <div>
+                <LargeSideBarSection title="Explore">
+                    <LargeSideBarItem IconName="fa-solid fa-arrow-trend-up" title="Trending" url="/trending" />
+                    <LargeSideBarItem IconName="fa-solid fa-cart-shopping" title="Shopping" url="/shopping" />
+                    <LargeSideBarItem IconName="fa-solid fa-music" title="Music" url="/music" />
+                    <LargeSideBarItem IconName="fa-solid fa-film" title="Movies & TV" url="/movies-tv" />
+                    <LargeSideBarItem IconName="fa-solid fa-radio" title="Live" url="/live" />
+                    <LargeSideBarItem IconName="fa-solid fa-gamepad" title="Gaming" url="/gaming" />
+                    <LargeSideBarItem IconName="fa-regular fa-newspaper" title="News" url="/news" />
+                    <LargeSideBarItem IconName="fa-solid fa-trophy" title="Sports" url="/sports" />
+                    <LargeSideBarItem IconName="fa-solid fa-school" title="Learning" url="/learning" />
+                    <LargeSideBarItem IconName="fa-solid fa-shirt" title="Fashion & Beauty" url="/fashion-beauty" />
+                    <LargeSideBarItem IconName="fa-solid fa-podcast" title="Podcast" url="/podcast" />
                 </LargeSideBarSection>
             </div>
 

@@ -5,7 +5,7 @@ import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faNewspaper, faUser } from '@fortawesome/free-regular-svg-icons'
 import { 
     faBars, 
     faUpload, 
@@ -24,7 +24,17 @@ import {
     faClock,
     faFileVideo,
     faAngleUp,
-    faAngleDown
+    faAngleDown,
+    faArrowTrendUp,
+    faCartShopping,
+    faFilm,
+    faGamepad,
+    faTrophy,
+    faSchool,
+    faShirt,
+    faPodcast,
+    faMusic,
+    faRadio
     
 } 
 from '@fortawesome/free-solid-svg-icons'
@@ -49,7 +59,18 @@ library.add(
     faClock,
     faFileVideo,
     faAngleUp,
-    faAngleDown
+    faAngleDown,
+    faArrowTrendUp,
+    faCartShopping,
+    faFilm,
+    faGamepad,
+    faTrophy,
+    faSchool,
+    faShirt,
+    faPodcast,
+    faMusic,
+    faRadio,
+    faNewspaper
 )
 
 createApp(App)
