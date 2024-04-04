@@ -62,7 +62,6 @@
 import { ref } from 'vue';
 import LargeSideBarItem from '../components/LargeSideBarItem.vue'
 import LargeSideBarSection from '../components/LargeSideBarSection.vue'
-import SmallSideBarItem from '../components/SmallSideBarItem.vue'
 import { playlists } from '../data/data'
 import { subscriptions } from '../data/data'
 
