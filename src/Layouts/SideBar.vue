@@ -1,13 +1,6 @@
 <template>
-    <div>
-        <aside class="sticky top-0 overflow-y-auto scrollbar-hidden pb-4 flex flex-col ml-1 lg:hidden">
-            <SmallSideBarItem IconName="fa-solid fa-house-user" title="Home" url="/" />
-            <SmallSideBarItem IconName="fa-solid fa-repeat" title="Shorts" url="/short" />
-            <SmallSideBarItem IconName="fa-solid fa-clapperboard" title="Subsriptions" url="/subsriptions" />
-            <SmallSideBarItem IconName="fa-solid fa-photo-film" title="Library" url="/library" />
-        </aside>
         <aside
-            class="w-56 hidden lg:sticky absolute top-0 overflow-y-auto scrollbar-hidden pb-4 flex-col gap-2 px-2 sm:flex">
+            class="w-56 hidden lg:sticky absolute top-0 overflow-y-auto scrollbar-hidden pb-4 flex-col gap-2 px-2 lg:flex">
             <LargeSideBarSection>
                 <LargeSideBarItem isActive IconName="fa-solid fa-house-user" title="Home" url="/" />
                 <LargeSideBarItem IconName="fa-solid fa-clapperboard" title="Subscriptions" url="/subsricptions" />
@@ -63,7 +56,6 @@
             </div>
 
         </aside>
-    </div>
 </template>
 
 <script setup lang="ts">

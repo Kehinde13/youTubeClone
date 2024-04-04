@@ -3,7 +3,8 @@
       <div class="flex justify-between gap-2 flex-shrink-0" v-if="!showSearchBar">
         
         <font-awesome-icon icon="fa-solid fa-bars" 
-        class="hover:bg-gray-200 rounded-full p-2"/>
+        class="hover:bg-gray-200 rounded-full p-2 hidden md:block"
+        />
         
         <div class="md:text-xl mt-1 md:mt-0">
             <font-awesome-icon icon="fa-brands fa-youtube" /> MeTube
@@ -38,13 +39,10 @@
           class="hover:bg-gray-200 rounded-full p-2 md:hidden"
           @click="toggleSearchBar"
           />
-          <font-awesome-icon 
-          icon="fa-solid fa-microphone" role="button" 
-          class="hover:bg-gray-200 rounded-full p-2 md:hidden" />
 
           <font-awesome-icon 
            icon="fa-solid fa-upload" role="button"
-          class="hover:bg-gray-200 rounded-full p-2" />
+          class="hover:bg-gray-200 rounded-full p-2 hidden md:block" />
 
           <font-awesome-icon 
           icon="fa-solid fa-bell" role="button"
@@ -52,7 +50,7 @@
 
           <font-awesome-icon  
           icon="fa-regular fa-user" role="button"
-          class="hover:bg-gray-200 rounded-full p-2" />
+          class="hover:bg-gray-200 rounded-full p-2 hidden md:block" />
       </div>
   </div>
 </template>

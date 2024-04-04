@@ -2,8 +2,8 @@
   <div className="max-h-screen flex flex-col">
   <HeaderVue />
   <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
-    <SideBar/>
-    <div className="overflow-x-hidden px-3 sm:px-8 pb-4">
+    <SideBar />
+    <div className="overflow-x-hidden px-4 sm:px-8 pb-4">
       <div className="sticky top-0 bg-white z-10 pb-4">
               <CategoriesPills
                 :categories="categories" 
@@ -16,6 +16,7 @@
       </div>
     </div>
   </div>
+  <BottomBar />
 </div>
 </template>
 
@@ -27,14 +28,16 @@
   import { videos } from './data/data'
   import { ref } from 'vue'
   import VideoGridItem from "./Layouts/VideoGridItem.vue";
+  import BottomBar from "./Layouts/BottomBar.vue"
 
   const selectedPill =  ref(categories[0]) 
   const emit = defineEmits(['pill'])
-
   
   const setSelectedPill = (pill : string) => {
     selectedPill.value = pill
   }
+
+  
 
 </script>
 
